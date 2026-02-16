@@ -1,5 +1,12 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+import { App } from './ui/App';
 
-const root = createRoot(document.body);
-root.render(<h2>Hello from React!</h2>);
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Root element #root not found.');
+}
+
+const root = createRoot(rootElement);
+root.render(<App />);
