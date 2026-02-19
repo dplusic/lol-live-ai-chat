@@ -15,7 +15,7 @@ require('update-electron-app')
 // Patch Sec-Ch-Ua headers so Google doesn't detect Electron and block OAuth login.
 // Electron appends "Electron";v="..." to Sec-Ch-Ua, which Google's identity service
 // treats as an unsafe embedded browser. We replace it with a plain Chrome value.
-const CHROME_UA_HINT = '"Chromium";v="136", "Google Chrome";v="136", "Not-A.Brand";v="99"';
+const CHROME_UA_HINT = '"Chromium";v="144", "Google Chrome";v="144", "Not-A.Brand";v="99"';
 
 function patchSessionHeaders(sess: Session) {
   sess.webRequest.onBeforeSendHeaders((details, callback) => {
@@ -23,7 +23,7 @@ function patchSessionHeaders(sess: Session) {
     if (headers['Sec-Ch-Ua']) headers['Sec-Ch-Ua'] = CHROME_UA_HINT;
     if (headers['Sec-Ch-Ua-Full-Version-List']) {
       headers['Sec-Ch-Ua-Full-Version-List'] =
-        '"Chromium";v="136.0.0.0", "Google Chrome";v="136.0.0.0", "Not-A.Brand";v="99.0.0.0"';
+        '"Chromium";v="144.0.0.0", "Google Chrome";v="144.0.0.0", "Not-A.Brand";v="99.0.0.0"';
     }
     callback({ requestHeaders: headers });
   });
