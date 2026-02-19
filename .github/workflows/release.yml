@@ -1,0 +1,32 @@
+name: Build and Publish Electron App
+
+# v1.0.0, v2.1.3 같은 태그가 푸시될 때만 이 워크플로우가 실행됩니다.
+on:
+  push:
+    tags:
+      - 'v*'
+
+# Release 권한 부여
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - name: 저장소 코드 불러오기
+        uses: actions/checkout@v4
+
+      - name: Node.js 환경 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: 의존성 패키지 설치
+        run: cd app && npm install
+
+      - name: Electron Forge Publish 실행
+        # Actions에서 기본 제공하는 토큰을 환경 변수로 전달합니다.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd app && npm run publish
