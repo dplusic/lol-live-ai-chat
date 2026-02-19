@@ -1,7 +1,7 @@
 {
   "name": "lol-live-ai-chat",
   "productName": "lol-live-ai-chat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lol-live-ai-chat",
   "main": ".webpack/main",
   "private": true,
