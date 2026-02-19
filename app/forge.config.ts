@@ -61,7 +61,7 @@ const config: ForgeConfig = {
           name: 'lol-live-ai-chat'
         },
         prerelease: false,
-        draft: true
+        draft: false
       }
     }
   ]

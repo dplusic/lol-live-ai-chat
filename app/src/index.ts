@@ -10,6 +10,8 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 if (require('electron-squirrel-startup')) app.quit();
 
+require('update-electron-app')
+
 // Patch Sec-Ch-Ua headers so Google doesn't detect Electron and block OAuth login.
 // Electron appends "Electron";v="..." to Sec-Ch-Ua, which Google's identity service
 // treats as an unsafe embedded browser. We replace it with a plain Chrome value.
