@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain, screen, session, Menu, Session } from 'electron';
+import { updateElectronApp } from 'update-electron-app';
 import { startGameLoop, stopGameLoop, sendGameCommand } from './game';
 import { setEventSink } from './game/events';
 import type { NativeMessage } from './game/events';
@@ -10,7 +11,7 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 if (require('electron-squirrel-startup')) app.quit();
 
-require('update-electron-app')
+updateElectronApp();
 
 // Patch Sec-Ch-Ua headers so Google doesn't detect Electron and block OAuth login.
 // Electron appends "Electron";v="..." to Sec-Ch-Ua, which Google's identity service
